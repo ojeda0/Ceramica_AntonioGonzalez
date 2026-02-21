@@ -25,20 +25,20 @@ export default function Gallery() {
                     <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-6">
                         Galería de Obras
                     </h2>
-                    <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold-light mx-auto rounded-full" />
+                    <div className="w-16 h-1 bg-linear-to-r from-gold to-gold-light mx-auto rounded-full" />
                 </ScrollReveal>
 
                 {/* Regular Grid (similar to Categories) */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {GALLERY_ITEMS.map((item, i) => (
                         <ScrollReveal key={i} delay={(i % 3) + 1} className="h-full">
-                            <div className="group relative w-full h-full aspect-[3/4] rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer bg-navy/5">
+                            <div className="group relative w-full h-full aspect-3/4 rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer bg-navy/5">
                                 <img
                                     src={item.src}
                                     alt={item.alt}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute inset-0 bg-linear-to-t from-navy/90 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                 <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 text-center">
                                     <h4 className="font-serif text-xl font-bold text-white mb-2">{item.title}</h4>
                                     <div className="w-8 h-px bg-gold mx-auto mb-3 group-hover:w-16 transition-all duration-500" />
@@ -52,9 +52,7 @@ export default function Gallery() {
                 {/* CTA */}
                 <ScrollReveal className="text-center mt-12">
                     <a
-                        href="https://ceramica-agonzalez.com/tienda/"
-                        target="_blank"
-                        rel="noopener noreferrer"
+                        href="/tienda"
                         className="inline-flex items-center gap-2 px-8 py-4 bg-navy hover:bg-navy-light text-white font-semibold rounded-full transition-all duration-300 hover:shadow-xl hover:-translate-y-1 text-sm sm:text-base"
                     >
                         Ver Todo el Catálogo

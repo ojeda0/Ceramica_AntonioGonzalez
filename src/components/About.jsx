@@ -43,7 +43,7 @@ export default function About() {
                         <br />
                         <span className="text-terracotta">Cerámica es Especial?</span>
                     </h2>
-                    <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold-light mx-auto rounded-full" />
+                    <div className="w-16 h-1 bg-linear-to-r from-gold to-gold-light mx-auto rounded-full" />
                 </ScrollReveal>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
@@ -56,7 +56,7 @@ export default function About() {
                                     alt="Taller de cerámica Antonio González"
                                     className="w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-navy/20 to-transparent" />
+                                <div className="absolute inset-0 bg-linear-to-t from-navy/20 to-transparent" />
                             </div>
                             {/* Floating badge */}
                             <div className="absolute -bottom-4 -right-4 sm:bottom-4 sm:right-4 bg-gold text-navy p-5 rounded-2xl shadow-xl hidden sm:block">
@@ -84,7 +84,7 @@ export default function About() {
                             {FEATURES.map((feature, i) => (
                                 <ScrollReveal key={feature.title} delay={i + 1}>
                                     <div className="flex items-start gap-5 p-5 rounded-xl bg-white/80 backdrop-blur-sm hover:bg-white hover:shadow-lg transition-all duration-300 group border border-transparent hover:border-gold/20">
-                                        <div className="flex-shrink-0 w-14 h-14 bg-gold/10 text-gold rounded-xl flex items-center justify-center group-hover:bg-gold group-hover:text-navy transition-all duration-300">
+                                        <div className="shrink-0 w-14 h-14 bg-gold/10 text-gold rounded-xl flex items-center justify-center group-hover:bg-gold group-hover:text-navy transition-all duration-300">
                                             {feature.icon}
                                         </div>
                                         <div>

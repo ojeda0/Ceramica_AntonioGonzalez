@@ -1,23 +1,14 @@
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Categories from './components/Categories';
-import About from './components/About';
-import Gallery from './components/Gallery';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
+import Gestor_Rutas_Principal from './views/Gestor_Rutas_Principal';
+import { CartProvider } from './context/CartContext';
+import CartDrawer from './components/CartDrawer';
 
 export default function App() {
   return (
-    <div className="min-h-screen w-full overflow-x-hidden">
-      <Header />
-      <main>
-        <Hero />
-        <Categories />
-        <About />
-        <Gallery />
-        <Contact />
-      </main>
-      <Footer />
-    </div>
+    <CartProvider>
+      <div className="min-h-screen w-full overflow-x-hidden">
+        <Gestor_Rutas_Principal />
+        <CartDrawer />
+      </div>
+    </CartProvider>
   );
 }

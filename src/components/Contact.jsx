@@ -32,7 +32,7 @@ export default function Contact() {
                         <br />
                         <span className="text-gold">Quieres un Encargo a Medida?</span>
                     </h2>
-                    <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold-light mx-auto rounded-full mb-8" />
+                    <div className="w-16 h-1 bg-linear-to-r from-gold to-gold-light mx-auto rounded-full mb-8" />
                     <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
                         Escríbenos y nos pondremos en contacto contigo lo antes posible.
                         Estaremos encantados de ayudarte con tu proyecto de cerámica personalizada.

@@ -1,20 +1,22 @@
 import { useState, useEffect } from 'react';
+import { useCart } from '../context/CartContext';
 
 const NAV_LINKS = [
-    { label: 'INICIO', href: '#inicio' },
-    { label: 'CENEFAS', href: 'https://ceramica-agonzalez.com/categoria-producto/cenefas/' },
-    { label: 'REGALOS', href: 'https://ceramica-agonzalez.com/categoria-producto/regalos-decoracion-ceramica/' },
-    { label: 'MOTIVOS DE 4', href: 'https://ceramica-agonzalez.com/categoria-producto/motivos-de-4/' },
-    { label: 'RÓTULOS', href: 'https://ceramica-agonzalez.com/categoria-producto/rotulos/' },
-    { label: 'VER TODO', href: 'https://ceramica-agonzalez.com/tienda/' },
-    { label: 'CONTACTO', href: '#contacto' },
+    { label: 'INICIO', href: '/' },
+    { label: 'CENEFAS', href: '/categoria-producto/cenefas' },
+    { label: 'REGALOS', href: '/categoria-producto/regalos' },
+    { label: 'MOTIVOS DE 4', href: '/categoria-producto/motivos-de-4' },
+    { label: 'RÓTULOS', href: '/categoria-producto/rotulos' },
+    { label: 'VER TODO', href: '/tienda' },
+    { label: 'CONTACTO', href: '/#contacto' },
 ];
 
 export default function Header() {
     const [scrolled, setScrolled] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
-    const [cartOpen, setCartOpen] = useState(false);
-    const [cartTotal, setCartTotal] = useState(0.00);
+
+    // Usar el contexto global
+    const { cartTotal, isCartOpen, setIsCartOpen } = useCart();
 
     useEffect(() => {
         const onScroll = () => setScrolled(window.scrollY > 50);
@@ -23,12 +25,12 @@ export default function Header() {
     }, []);
 
     useEffect(() => {
-        if (menuOpen || cartOpen) {
+        if (menuOpen || isCartOpen) {
             document.body.style.overflow = 'hidden';
         } else {
             document.body.style.overflow = '';
         }
-    }, [menuOpen, cartOpen]);
+    }, [menuOpen, isCartOpen]);
 
     const isExternal = (href) => href.startsWith('http');
 
@@ -54,7 +56,7 @@ export default function Header() {
 
     const CartButton = ({ className = '' }) => (
         <button
-            onClick={() => setCartOpen(true)}
+            onClick={() => setIsCartOpen(true)}
             className={`flex items-center gap-2.5 px-5 py-2 border border-gold/50 rounded text-gold hover:bg-gold hover:text-navy cursor-pointer transition-all duration-300 ${className}`}
         >
             <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -79,7 +81,7 @@ export default function Header() {
                         `}
                         >
                             {/* Centered Logo */}
-                            <a href="#inicio" className="flex flex-col items-center leading-tight group mb-6">
+                            <a href="/" className="flex flex-col items-center leading-tight group mb-6">
                                 <span className="font-serif font-bold tracking-[0.2em] text-white group-hover:text-gold transition-all duration-300 text-xl sm:text-2xl">
                                     ANTONIO GONZÁLEZ
                                 </span>
@@ -104,7 +106,7 @@ export default function Header() {
                         `}
                         >
                             {/* Logo — far left */}
-                            <a href="#inicio" className="flex flex-col leading-tight group shrink-0">
+                            <a href="/" className="flex flex-col leading-tight group shrink-0">
                                 <span className="font-serif font-bold tracking-[0.2em] text-white group-hover:text-gold transition-all duration-300 text-base sm:text-lg">
                                     ANTONIO GONZÁLEZ
                                 </span>
@@ -126,7 +128,7 @@ export default function Header() {
                     {/* ===== MOBILE: always same layout ===== */}
                     <div className="lg:hidden py-4">
                         <div className="flex items-center justify-between">
-                            <a href="#inicio" className="flex flex-col leading-tight group">
+                            <a href="/" className="flex flex-col leading-tight group">
                                 <span className="font-serif font-bold tracking-[0.2em] text-white group-hover:text-gold text-lg">
                                     ANTONIO GONZÁLEZ
                                 </span>
@@ -170,9 +172,9 @@ export default function Header() {
                     <button
                         onClick={() => {
                             setMenuOpen(false);
-                            setCartOpen(true);
+                            setIsCartOpen(true);
                         }}
-                        className={`mt-4 flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white hover:text-gold transition-all duration-500 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                        className={`mt-4 flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white hover:text-gold transition-all duration-500 cursor-pointer ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
                         style={{ transitionDelay: menuOpen ? `${NAV_LINKS.length * 60}ms` : '0ms' }}
                     >
                         <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
@@ -182,51 +184,6 @@ export default function Header() {
                     </button>
                 </div>
             </header>
-
-            {/* Backdrop para Carrito Lateral */}
-            <div
-                className={`fixed inset-0 bg-black/40 backdrop-blur-sm transition-opacity duration-300 z-[60] ${cartOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                onClick={() => setCartOpen(false)}
-            />
-
-            {/* Sidebar Carrito Lateral */}
-            <div className={`fixed top-0 right-0 h-full w-full sm:w-[400px] bg-warm-white z-[70] shadow-2xl transform transition-transform duration-500 ease-in-out ${cartOpen ? 'translate-x-0' : 'translate-x-full'} flex flex-col`}>
-
-                {/* Header del carrito */}
-                <div className="flex items-center justify-between p-6 border-b border-navy/10">
-                    <div className="flex items-center gap-3 text-navy">
-                        <svg className="w-5 h-5 text-gold" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                        </svg>
-                        <h2 className="font-serif text-lg font-medium">Carrito - {cartTotal.toFixed(2)}€</h2>
-                    </div>
-                    <button
-                        onClick={() => setCartOpen(false)}
-                        className="text-navy/50 hover:text-navy transition-colors"
-                        aria-label="Cerrar carrito"
-                    >
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                        </svg>
-                    </button>
-                </div>
-
-                {/* Contenido del carrito (vacío por ahora) */}
-                <div className="flex-1 flex flex-col items-center justify-center p-8 text-center bg-cream/30">
-                    <svg className="w-16 h-16 text-navy/10 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1}>
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
-                    </svg>
-                    <p className="font-serif text-lg text-navy mb-6">Tu carrito está vacío</p>
-                    <a
-                        href="https://ceramica-agonzalez.com/tienda/"
-                        onClick={() => setCartOpen(false)}
-                        className="px-6 py-2.5 bg-transparent border border-navy/20 text-navy hover:border-gold hover:text-gold transition-colors text-sm uppercase tracking-wider font-medium"
-                    >
-                        Ver productos
-                    </a>
-                </div>
-
-            </div>
         </>
     );
 }

@@ -25,11 +25,11 @@ export default function Hero() {
             </div>
 
             {/* Gradient Overlays */}
-            <div className="absolute inset-0 bg-gradient-to-b from-navy/70 via-navy/50 to-navy/80 z-10" />
-            <div className="absolute inset-0 bg-gradient-to-r from-navy/40 to-transparent z-10" />
+            <div className="absolute inset-0 bg-linear-to-b from-navy/70 via-navy/50 to-navy/80 z-10" />
+            <div className="absolute inset-0 bg-linear-to-r from-navy/40 to-transparent z-10" />
 
             {/* Content wrapper with fixed top and bottom padding */}
-            <div className="relative z-20 flex flex-col items-center w-full gap-16 pt-[14rem] pb-20">
+            <div className="relative z-20 flex flex-col items-center w-full gap-16 pt-56 pb-20">
                 {/* Top block: Logo + Desde Sevilla (Kept the horizontal tracking compensation) */}
                 <div className="text-center px-6 sm:px-8 w-full max-w-4xl mx-auto translate-x-3 sm:translate-x-4">
                     {/* Logo name */}
