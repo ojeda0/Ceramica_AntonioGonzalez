@@ -7,41 +7,42 @@ import aboutImg from '../assets/images/about-workshop.png';
 import heroImg from '../assets/images/hero-bg.png';
 
 const GALLERY_ITEMS = [
-    { src: catCenefas, alt: 'Cenefa artesanal pintada a mano', title: 'Cenefa Artesanal', span: 'col-span-1 row-span-1' },
-    { src: heroImg, alt: 'Taller cerámico sevillano', title: 'Nuestro Taller', span: 'col-span-1 row-span-2 sm:row-span-2' },
-    { src: catMotivos, alt: 'Motivo de 4 azulejos decorativos', title: 'Motivo de 4', span: 'col-span-1 row-span-1' },
-    { src: aboutImg, alt: 'Artesanía cerámica', title: 'Artesanía Viva', span: 'col-span-1 sm:col-span-2 row-span-1' },
-    { src: catRotulos, alt: 'Rótulos cerámicos personalizados', title: 'Rótulos Personalizados', span: 'col-span-1 row-span-1' },
-    { src: catRegalos, alt: 'Regalos de cerámica artesanal', title: 'Regalos Únicos', span: 'col-span-1 row-span-1' },
+    { src: catCenefas, alt: 'Cenefa artesanal pintada a mano', title: 'Cenefa Artesanal' },
+    { src: heroImg, alt: 'Taller cerámico sevillano', title: 'Nuestro Taller' },
+    { src: catMotivos, alt: 'Motivo de 4 azulejos decorativos', title: 'Motivo de 4' },
+    { src: aboutImg, alt: 'Artesanía cerámica', title: 'Artesanía Viva' },
+    { src: catRotulos, alt: 'Rótulos cerámicos personalizados', title: 'Rótulos Personalizados' },
+    { src: catRegalos, alt: 'Regalos de cerámica artesanal', title: 'Regalos Únicos' },
 ];
 
 export default function Gallery() {
     return (
-        <section id="galeria" className="py-28 sm:py-36 bg-warm-white overflow-hidden">
+        <section id="galeria" className="pt-16 pb-12 sm:pt-20 sm:pb-12 bg-warm-white overflow-hidden">
             <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
                 {/* Section Header */}
-                <ScrollReveal className="text-center mb-16">
-                    <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Nuestro Trabajo</span>
-                    <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-5">
+                <ScrollReveal className="text-center mb-12">
+                    <span className="block text-gold text-xl sm:text-2xl tracking-[0.2em] uppercase font-bold mb-2">Nuestro Trabajo</span>
+                    <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-6">
                         Galería de Obras
                     </h2>
                     <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold-light mx-auto rounded-full" />
                 </ScrollReveal>
 
-                {/* Masonry Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[250px] gap-4">
+                {/* Regular Grid (similar to Categories) */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                     {GALLERY_ITEMS.map((item, i) => (
-                        <ScrollReveal key={i} delay={(i % 4) + 1} className={item.span}>
-                            <div className="group relative w-full h-full rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer">
+                        <ScrollReveal key={i} delay={(i % 3) + 1} className="h-full">
+                            <div className="group relative w-full h-full aspect-[3/4] rounded-xl overflow-hidden shadow-md hover:shadow-2xl transition-all duration-500 cursor-pointer bg-navy/5">
                                 <img
                                     src={item.src}
                                     alt={item.alt}
                                     className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                                 />
-                                <div className="absolute inset-0 bg-gradient-to-t from-navy/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-                                <div className="absolute bottom-0 left-0 right-0 p-5 translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                                    <h4 className="font-serif text-lg font-bold text-white">{item.title}</h4>
-                                    <p className="text-white/70 text-sm mt-1">{item.alt}</p>
+                                <div className="absolute inset-0 bg-gradient-to-t from-navy/90 via-navy/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                                <div className="absolute bottom-0 left-0 right-0 p-6 translate-y-4 group-hover:translate-y-0 opacity-0 group-hover:opacity-100 transition-all duration-500 text-center">
+                                    <h4 className="font-serif text-xl font-bold text-white mb-2">{item.title}</h4>
+                                    <div className="w-8 h-px bg-gold mx-auto mb-3 group-hover:w-16 transition-all duration-500" />
+                                    <p className="text-white/80 text-sm hidden sm:block">{item.alt}</p>
                                 </div>
                             </div>
                         </ScrollReveal>

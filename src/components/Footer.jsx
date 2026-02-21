@@ -3,19 +3,22 @@ export default function Footer() {
 
     return (
         <footer className="bg-navy-dark pt-16 pb-8">
-            <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
+            <div className="w-full max-w-[1600px] mx-auto px-6 sm:px-8 lg:px-16">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-16 mb-12">
                     {/* Brand */}
-                    <div className="sm:col-span-2 lg:col-span-1">
-                        <a href="#inicio" className="flex flex-col leading-tight group inline-block mb-4">
-                            <span className="font-serif text-xl font-bold tracking-[0.15em] text-white group-hover:text-gold transition-colors duration-300">
-                                ANTONIO GONZÁLEZ
-                            </span>
-                            <span className="text-[10px] tracking-[0.25em] text-gold/80 uppercase font-light">
-                                Cerámica Artística Sevillana
-                            </span>
-                        </a>
-                        <p className="text-white/50 text-sm leading-relaxed mt-3">
+                    <div className="sm:col-span-2 lg:col-span-2 lg:pr-12">
+                        <div className="w-fit flex flex-col items-center">
+                            <a href="#inicio" className="flex flex-col items-center leading-tight group mb-6">
+                                <span className="font-serif text-xl sm:text-2xl font-bold tracking-[0.2em] text-white whitespace-nowrap group-hover:text-gold transition-colors duration-300">
+                                    ANTONIO GONZÁLEZ
+                                </span>
+                                <span className="text-[10px] sm:text-xs tracking-[0.3em] text-gold/80 uppercase font-light mt-1">
+                                    Cerámica Artística Sevillana
+                                </span>
+                            </a>
+                            <div className="w-12 h-0.5 bg-white/20 rounded-full mb-10" />
+                        </div>
+                        <p className="text-white/60 text-sm leading-relaxed">
                             Expertos en la fabricación y venta de cerámica artesanal, pintada a mano con esmero desde nuestro taller en Sevilla.
                         </p>
                     </div>

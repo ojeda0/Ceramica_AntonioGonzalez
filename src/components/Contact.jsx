@@ -16,7 +16,7 @@ export default function Contact() {
     };
 
     return (
-        <section id="contacto" className="py-28 sm:py-36 bg-navy relative overflow-hidden">
+        <section id="contacto" className="pt-16 pb-16 sm:pt-20 sm:pb-20 bg-navy relative overflow-hidden">
             {/* Decorative background */}
             <div className="absolute inset-0 opacity-5">
                 <div className="absolute top-0 left-0 w-96 h-96 bg-gold rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2" />
@@ -24,21 +24,37 @@ export default function Contact() {
             </div>
 
             <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 relative z-10">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20">
-                    {/* Left - Info */}
-                    <ScrollReveal>
-                        <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Contacto</span>
-                        <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mt-3 mb-6 leading-tight">
-                            ¿Tienes Alguna Consulta o
-                            <br />
-                            <span className="text-gold">Quieres un Encargo a Medida?</span>
-                        </h2>
-                        <p className="text-white/60 text-base sm:text-lg leading-relaxed mb-10">
-                            Escríbenos y nos pondremos en contacto contigo lo antes posible.
-                            Estaremos encantados de ayudarte con tu proyecto de cerámica personalizada.
-                        </p>
+                {/* Section Header */}
+                <ScrollReveal className="text-center mb-16">
+                    <span className="block text-gold text-xl sm:text-2xl tracking-[0.2em] uppercase font-bold mb-2">Contacto</span>
+                    <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-6 leading-tight">
+                        ¿Tienes Alguna Consulta o
+                        <br />
+                        <span className="text-gold">Quieres un Encargo a Medida?</span>
+                    </h2>
+                    <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold-light mx-auto rounded-full mb-8" />
+                    <p className="text-white/60 text-base sm:text-lg leading-relaxed max-w-2xl mx-auto">
+                        Escríbenos y nos pondremos en contacto contigo lo antes posible.
+                        Estaremos encantados de ayudarte con tu proyecto de cerámica personalizada.
+                    </p>
+                </ScrollReveal>
 
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-stretch">
+                    {/* Left - Info */}
+                    <ScrollReveal className="flex flex-col justify-between h-full py-2">
                         {/* Contact info cards */}
+                        <div className="mb-8">
+                            <h3 className="font-serif text-2xl sm:text-3xl font-bold text-white mb-2">
+                                ¿Tienes Alguna Duda?
+                            </h3>
+                            <p className="text-gold font-medium text-lg mb-6">Contáctanos de Forma Directa</p>
+                            <div className="w-12 h-0.5 bg-white/20 rounded-full mb-6" />
+                            <p className="text-white/60 text-base leading-relaxed max-w-md">
+                                Puedes encontrarnos en los siguientes canales para
+                                consultas directas, información sobre nuestras piezas o
+                                cualquier pregunta que no requiera un proyecto a medida.
+                            </p>
+                        </div>
                         <div className="space-y-4">
                             <a
                                 href="mailto:info@ceramica-agonzalez.com"

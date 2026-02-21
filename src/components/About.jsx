@@ -33,8 +33,19 @@ const FEATURES = [
 
 export default function About() {
     return (
-        <section id="nosotros" className="py-28 sm:py-36 bg-cream overflow-hidden">
+        <section id="nosotros" className="pt-16 pb-16 sm:pt-20 sm:pb-20 bg-cream overflow-hidden">
             <div className="w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10">
+                {/* Section Header */}
+                <ScrollReveal className="text-center mb-12">
+                    <span className="block text-gold text-xl sm:text-2xl tracking-[0.2em] uppercase font-bold mb-2">Sobre Nosotros</span>
+                    <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mb-6 leading-tight">
+                        ¿Por Qué Nuestra
+                        <br />
+                        <span className="text-terracotta">Cerámica es Especial?</span>
+                    </h2>
+                    <div className="w-16 h-1 bg-gradient-to-r from-gold to-gold-light mx-auto rounded-full" />
+                </ScrollReveal>
+
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
                     {/* Image Side */}
                     <ScrollReveal>
@@ -60,12 +71,6 @@ export default function About() {
                     {/* Text Side */}
                     <div>
                         <ScrollReveal>
-                            <span className="text-gold text-xs tracking-[0.3em] uppercase font-semibold">Sobre Nosotros</span>
-                            <h2 className="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-navy mt-3 mb-6 leading-tight">
-                                ¿Por Qué Nuestra
-                                <br />
-                                <span className="text-terracotta">Cerámica es Especial?</span>
-                            </h2>
                             <p className="text-navy/70 text-base sm:text-lg leading-relaxed mb-10">
                                 En Cerámicas Antonio González somos expertos en la fabricación y venta de cerámica artesanal,
                                 pintada a mano con esmero. Nos enorgullece ofrecer a nuestros clientes la posibilidad de
