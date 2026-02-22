@@ -150,40 +150,39 @@ export default function Header() {
                         </div>
                     </div>
                 </div>
-
-                {/* Mobile Menu Overlay */}
-                <div
-                    className={`fixed inset-0 bg-navy/98 backdrop-blur-xl lg:hidden transition-all duration-500 flex flex-col items-center justify-center gap-5 ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
-                    style={{ top: 0, zIndex: -1 }}
-                >
-                    {NAV_LINKS.map((link, i) => (
-                        <a
-                            key={link.label}
-                            href={link.href}
-                            target={isExternal(link.href) ? '_blank' : undefined}
-                            rel={isExternal(link.href) ? 'noopener noreferrer' : undefined}
-                            onClick={() => setMenuOpen(false)}
-                            className={`text-xl font-serif text-white hover:text-gold transition-all duration-500 tracking-wider ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-                            style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
-                        >
-                            {link.label}
-                        </a>
-                    ))}
-                    <button
-                        onClick={() => {
-                            setMenuOpen(false);
-                            setIsCartOpen(true);
-                        }}
-                        className={`mt-4 flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white hover:text-gold transition-all duration-500 cursor-pointer ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
-                        style={{ transitionDelay: menuOpen ? `${NAV_LINKS.length * 60}ms` : '0ms' }}
-                    >
-                        <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
-                        </svg>
-                        <span className="text-sm tracking-wider font-medium">{cartTotal.toFixed(2)}€</span>
-                    </button>
-                </div>
             </header>
+
+            {/* Mobile Menu Overlay */}
+            <div
+                className={`fixed inset-0 z-40 bg-navy/98 backdrop-blur-xl lg:hidden transition-all duration-500 flex flex-col items-center justify-center gap-5 pt-20 pb-6 overflow-y-auto ${menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'}`}
+            >
+                {NAV_LINKS.map((link, i) => (
+                    <a
+                        key={link.label}
+                        href={link.href}
+                        target={isExternal(link.href) ? '_blank' : undefined}
+                        rel={isExternal(link.href) ? 'noopener noreferrer' : undefined}
+                        onClick={() => setMenuOpen(false)}
+                        className={`text-xl font-serif text-white hover:text-gold transition-all duration-500 tracking-wider shrink-0 ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                        style={{ transitionDelay: menuOpen ? `${i * 60}ms` : '0ms' }}
+                    >
+                        {link.label}
+                    </a>
+                ))}
+                <button
+                    onClick={() => {
+                        setMenuOpen(false);
+                        setIsCartOpen(true);
+                    }}
+                    className={`mt-4 shrink-0 flex items-center gap-3 px-6 py-3 bg-white/10 border border-white/20 rounded-full text-white hover:text-gold transition-all duration-500 cursor-pointer ${menuOpen ? 'translate-y-0 opacity-100' : 'translate-y-8 opacity-0'}`}
+                    style={{ transitionDelay: menuOpen ? `${NAV_LINKS.length * 60}ms` : '0ms' }}
+                >
+                    <svg className="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+                    </svg>
+                    <span className="text-sm tracking-wider font-medium">{cartTotal.toFixed(2)}€</span>
+                </button>
+            </div>
         </>
     );
 }

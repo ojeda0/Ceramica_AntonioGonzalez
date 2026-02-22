@@ -8,6 +8,7 @@ import Vista_Coleccion_Letreros from './Vista_Coleccion_Letreros';
 import Galeria_General_Articulos from './Galeria_General_Articulos';
 import Vista_Pagina_Carrito from './Vista_Pagina_Carrito';
 import Vista_Pagina_Finalizar_Compra from './Vista_Pagina_Finalizar_Compra';
+import Vista_Pagina_Pedido_Completado from './Vista_Pagina_Pedido_Completado';
 
 export default function Gestor_Rutas_Principal() {
     return (
@@ -21,6 +22,7 @@ export default function Gestor_Rutas_Principal() {
                 <Route path="/tienda" element={<Galeria_General_Articulos />} />
                 <Route path="/carrito" element={<Vista_Pagina_Carrito />} />
                 <Route path="/finalizar-comprar" element={<Vista_Pagina_Finalizar_Compra />} />
+                <Route path="/pedido-completado" element={<Vista_Pagina_Pedido_Completado />} />
             </Routes>
         </BrowserRouter>
     );

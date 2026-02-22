@@ -12,9 +12,10 @@ export default function Vista_Principal_Inicio() {
     const location = useLocation();
 
     useEffect(() => {
+        document.title = "Cerámica Antonio González";
+
         if (location.hash) {
             const id = location.hash.replace('#', '');
-            // Try to find the element
             const element = document.getElementById(id);
             if (element) {
                 // Need a slight timeout to ensure inner components are rendered

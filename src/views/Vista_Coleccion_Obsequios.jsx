@@ -1,9 +1,14 @@
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ShopGrid from '../components/ShopGrid';
 import bannerImg from '../assets/images/banner_regalos.png';
 
 export default function Vista_Coleccion_Obsequios() {
+    useEffect(() => {
+        document.title = "Regalos y Decoración - Cerámica Antonio González";
+    }, []);
+
     return (
         <>
             <Header />

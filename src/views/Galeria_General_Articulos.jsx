@@ -1,9 +1,14 @@
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ShopGrid from '../components/ShopGrid';
 import bannerImg from '../assets/images/banner_tienda.png';
 
 export default function Galeria_General_Articulos() {
+    useEffect(() => {
+        document.title = "Tienda - Cerámica Antonio González";
+    }, []);
+
     return (
         <>
             <Header />

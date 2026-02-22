@@ -86,6 +86,18 @@ export default function Footer() {
                                 </a>
                             </li>
                             <li className="flex items-center gap-3 pt-2">
+                                {/* Email */}
+                                <a
+                                    href="mailto:info@ceramica-agonzalez.com"
+                                    className="w-10 h-10 bg-white/5 hover:bg-gold text-white/50 hover:text-navy rounded-lg flex items-center justify-center transition-all duration-300"
+                                    aria-label="Email"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path>
+                                    </svg>
+                                </a>
+
+                                {/* Facebook */}
                                 <a
                                     href="https://www.facebook.com/ceramica.artistica.sevillana/"
                                     target="_blank"
@@ -95,6 +107,19 @@ export default function Footer() {
                                 >
                                     <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                         <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                    </svg>
+                                </a>
+
+                                {/* Web */}
+                                <a
+                                    href="https://ceramica-agonzalez.com"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="w-10 h-10 bg-white/5 hover:bg-gold text-white/50 hover:text-navy rounded-lg flex items-center justify-center transition-all duration-300"
+                                    aria-label="Sitio Web"
+                                >
+                                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path>
                                     </svg>
                                 </a>
                             </li>

@@ -1,9 +1,21 @@
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { useCart } from '../context/CartContext';
 
 export default function Vista_Pagina_Carrito() {
     const { cartItems, cartTotal, updateQuantity, removeItem } = useCart();
+
+    useEffect(() => {
+        document.title = "Carrito - Cerámica Antonio González";
+        if (window.location.hash === '#cupon') {
+            const el = document.getElementById('cupon');
+            if (el) {
+                // Pequeño timeout para asegurar que la página ha renderizado y scrolleado un poco
+                setTimeout(() => el.focus(), 500);
+            }
+        }
+    }, []);
 
     // Configuración de envío simulada por ahora igual a la foto
     const shippingCost = cartItems.length > 0 ? 8.01 : 0;
@@ -13,38 +25,64 @@ export default function Vista_Pagina_Carrito() {
         <div className="min-h-screen bg-warm-white flex flex-col font-sans text-navy">
             <Header />
 
-            {/* Espaciador para el header fijo */}
-            <div className="pt-32 pb-12 lg:pt-40 lg:pb-16 text-center px-4">
-                <h1 className="font-serif text-3xl md:text-4xl text-navy mb-2">CARRITO</h1>
-                <p className="text-navy/50 text-sm tracking-wide">Inicio <span className="mx-1">/</span> Carrito</p>
+            {/* Espaciador para el header fijo ajustado al diseño global */}
+            <div className="relative w-full flex flex-col items-center overflow-hidden mb-12">
+                {/* Background Image - Added to match other sections */}
+                <div
+                    className="absolute inset-0 bg-cover bg-center bg-no-repeat z-0"
+                    style={{ backgroundImage: `url('/assets/cart_tiles_hero_v3.png')` }}
+                ></div>
+                <div className="absolute inset-0 bg-navy/80 z-0 text-white"></div> {/* Overlay */}
+
+                <div className="relative z-20 flex flex-col items-center w-full pt-56 pb-24 text-center px-6">
+                    <h1 className="font-serif text-4xl lg:text-5xl font-bold text-white mb-6 drop-shadow-lg">
+                        Carrito
+                    </h1>
+                    {/* Decorative Divider */}
+                    <div className="w-16 h-1 bg-linear-to-r from-gold to-gold-light mx-auto rounded-full mb-8"></div>
+                    <p className="text-white/80 text-lg tracking-wide max-w-2xl mx-auto">
+                        Previsualización de tu carrito
+                    </p>
+                </div>
             </div>
 
             <main className="flex-1 w-full max-w-6xl mx-auto px-6 sm:px-8 lg:px-10 pb-24">
 
                 {/* Progress Steps Indicator */}
-                <div className="flex items-center justify-center mb-20 max-w-3xl mx-auto relative px-4">
-                    {/* Line behind */}
-                    <div className="absolute top-1/2 left-0 w-full h-px bg-navy/10 -z-10 translate-y-3"></div>
-                    <div className="absolute top-1/2 left-0 w-1/3 h-px bg-navy -z-10 translate-y-3"></div>
+                <div className="flex items-end justify-between w-full max-w-4xl mx-auto px-4 sm:px-12 mb-12 sm:mb-20 relative">
 
                     {/* Step 1: Active */}
-                    <div className="flex-1 flex flex-col items-center bg-warm-white px-2">
-                        <span className="text-sm font-serif mb-2 text-navy">Tu carrito</span>
-                        <div className="w-8 h-8 rounded-full bg-navy text-white flex items-center justify-center font-serif shadow-sm">
+                    <div className="flex flex-col items-center w-24 sm:w-40 shrink-0 relative z-10">
+                        <span className="text-xs sm:text-lg font-serif text-navy mb-2 sm:mb-4 text-center leading-tight whitespace-normal sm:whitespace-nowrap font-medium tracking-wide">Tu carrito</span>
+                        <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-navy text-gold flex items-center justify-center font-serif text-base sm:text-xl shadow-lg border-2 sm:border-[3px] border-terracotta transition-transform hover:scale-105">
                             1
                         </div>
                     </div>
+
+                    {/* Line 1-2 */}
+                    <div className="flex-1 flex items-center -ml-2 sm:-ml-4 -mr-2 sm:-mr-4 mb-5 sm:mb-7 relative z-0">
+                        <div className="h-[2px] sm:h-[3px] w-full bg-navy/10 rounded-full"></div>
+                        {/* Progressing line: partial fill (50%) to indicate moving to step 2 */}
+                        <div className="absolute top-1/2 -translate-y-1/2 left-0 w-1/2 h-[3px] sm:h-[4px] bg-terracotta rounded-full transition-all duration-1000 origin-left"></div>
+                    </div>
+
                     {/* Step 2: Inactive */}
-                    <div className="flex-1 flex flex-col items-center bg-warm-white px-2">
-                        <span className="text-sm font-serif mb-2 text-navy/40">Detalles de pago</span>
-                        <div className="w-8 h-8 rounded-full bg-navy/10 text-navy/40 flex items-center justify-center font-serif">
+                    <div className="flex flex-col items-center w-24 sm:w-40 shrink-0 relative z-10">
+                        <span className="text-xs sm:text-lg font-serif text-navy/40 mb-2 sm:mb-4 text-center leading-tight whitespace-normal sm:whitespace-nowrap tracking-wide">Detalles de pago</span>
+                        <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white text-navy/40 flex items-center justify-center font-serif text-base sm:text-xl shadow-sm border-2 border-navy/10 transition-colors">
                             2
                         </div>
                     </div>
+
+                    {/* Line 2-3 */}
+                    <div className="flex-1 flex items-center -ml-2 sm:-ml-4 -mr-2 sm:-mr-4 mb-5 sm:mb-7 relative z-0">
+                        <div className="h-[2px] sm:h-[3px] w-full bg-navy/10 rounded-full"></div>
+                    </div>
+
                     {/* Step 3: Inactive */}
-                    <div className="flex-1 flex flex-col items-center bg-warm-white px-2 text-center">
-                        <span className="text-sm font-serif mb-2 text-navy/40">Pedido completado</span>
-                        <div className="w-8 h-8 rounded-full bg-navy/10 text-navy/40 flex items-center justify-center font-serif">
+                    <div className="flex flex-col items-center w-24 sm:w-40 shrink-0 relative z-10">
+                        <span className="text-xs sm:text-lg font-serif text-navy/40 mb-2 sm:mb-4 text-center leading-tight whitespace-normal sm:whitespace-nowrap tracking-wide">Pedido completado</span>
+                        <div className="w-10 h-10 sm:w-14 sm:h-14 rounded-full bg-white text-navy/40 flex items-center justify-center font-serif text-base sm:text-xl shadow-sm border-2 border-navy/10 transition-colors">
                             3
                         </div>
                     </div>
@@ -136,6 +174,7 @@ export default function Vista_Pagina_Carrito() {
                             <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 mt-8 pt-8 border-t border-navy/10">
                                 <div className="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
                                     <input
+                                        id="cupon"
                                         type="text"
                                         placeholder="Código de cupón"
                                         className="border border-navy/20 px-4 py-3 text-sm focus:outline-none focus:border-navy bg-transparent w-full sm:w-48 placeholder-navy/40"
@@ -144,12 +183,6 @@ export default function Vista_Pagina_Carrito() {
                                         APLICAR CUPÓN
                                     </button>
                                 </div>
-                                <button className="flex items-center gap-2 text-sm text-navy/60 hover:text-navy transition-colors cursor-pointer px-4 py-3 whitespace-nowrap">
-                                    <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                                        <path strokeLinecap="round" strokeLinejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" />
-                                    </svg>
-                                    Actualizar carrito
-                                </button>
                             </div>
                         </div>
 

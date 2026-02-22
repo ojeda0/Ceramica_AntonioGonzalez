@@ -1,9 +1,14 @@
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ShopGrid from '../components/ShopGrid';
 import bannerImg from '../assets/images/banner_cenefas.png';
 
 export default function Vista_Coleccion_Bordes() {
+    useEffect(() => {
+        document.title = "Cenefas - Cerámica Antonio González";
+    }, []);
+
     return (
         <>
             <Header />

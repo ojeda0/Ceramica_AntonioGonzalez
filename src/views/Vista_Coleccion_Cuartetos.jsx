@@ -1,9 +1,14 @@
+import React, { useEffect } from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import ShopGrid from '../components/ShopGrid';
 import bannerImg from '../assets/images/banner_motivos4.png';
 
 export default function Vista_Coleccion_Cuartetos() {
+    useEffect(() => {
+        document.title = "Motivos de 4 - Cerámica Antonio González";
+    }, []);
+
     return (
         <>
             <Header />

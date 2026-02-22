@@ -61,7 +61,7 @@ export default function ShopGrid({ activeCategorySlug }) {
 
                 {/* Main Store Pills */}
                 {activeCategorySlug === 'todos' && (
-                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                    <div className="flex flex-wrap justify-start gap-3">
                         {CATEGORY_LINKS.map(link => {
                             const isActive = link.slug === localFilterSlug;
                             return (
@@ -82,7 +82,7 @@ export default function ShopGrid({ activeCategorySlug }) {
 
                 {/* Subcategory Pills for specific sections */}
                 {activeCategorySlug !== 'todos' && SUBCATEGORY_LINKS[activeCategorySlug] && (
-                    <div className="flex flex-wrap justify-center md:justify-start gap-3">
+                    <div className="flex flex-wrap justify-start gap-3">
                         {SUBCATEGORY_LINKS[activeCategorySlug].map(link => {
                             // If localFilterSlug is the activeCategorySlug, it means "Todos" is active for this subcategory
                             const isActive = localFilterSlug === link.slug || (link.slug === 'todos' && localFilterSlug === activeCategorySlug);
